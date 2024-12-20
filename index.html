@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кто ты ?</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scriptiz.js" defer></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="carousel">
+        <button class="arrow left">&#8592;</button>
+        <div class="image-container">
+            <!-- Thymeleaf вставляет изображения динамически -->
+            <div th:each="image, index : ${images}">
+                <img th:src="${image}" th:alt="'Фото ' + (${index.index} + 1)" class="image">
+            </div>
+
+        </div>
+        <button class="arrow right">&#8594;</button>
+    </div>
+    <form action="/submit" method="POST" class="form">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit" class="submit-button">Далее</button>
+    </form>
+</div>
+</body>
+</html>
